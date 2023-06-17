@@ -1,0 +1,26 @@
+name: Build //+Push+Deploy blog //into K8s
+
+on:
+  workflow_dispatch:
+#  push:
+#    branches: [ "main" ]
+#  pull_request:
+#    branches: [ "main" ]
+
+jobs:
+
+  build-push-deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    #- name: Install doctl
+    #  uses: digitalocean/action-doctl@v2
+    #  with:
+    #    token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+    - name: Build Docker image
+      run: docker build -t stepanklos/blog:$(echo $GITHUB_SHA | head -c7) .
