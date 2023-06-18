@@ -1,6 +1,6 @@
 ---
 title: Goobye world post
-date: "2023-07-17T23:46:37.121Z"
+date: "2023-06-16T23:46:37.121Z"
 ---
 
 Post
