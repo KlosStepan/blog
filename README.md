@@ -96,15 +96,21 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 
 The fastest way to combine your favorite tools and APIs to build the fastest sites, stores, and apps for the web. And also the best place to build, deploy, and host your Gatsby sites.
 
-<!-- AUTO-GENERATED-CONTENT:END -->
+<!-- AUTO-GENERATEDCONTENT:END -->
+## Blog ideas overall
+- nice design
+- categories
+- mby rebrand to different domain, but not yet 
 
 ## Blogpost Ideas programming
-- Node.js ft Oracle DB
-- React/Node fullstack
-- Kubernetes stuff (DOKS-tutorial ala) 1-5 napr.
-- CI/CD pipeliny SwimmPair, React->K8s CD, atd.
-- React stuff (Redux, atd.) for beginners as well
-- 10x PHP serial na nejake jednoduche appce ala videa
+- O How to make simple npm package
+- O Get ready your Kubernetes cluster (what steps do you need)
+- T Node.js ft Oracle DB
+- T React/Node fullstack
+- T Kubernetes stuff (DOKS-tutorial ala) 1-5 napr.
+- T CI/CD pipeliny SwimmPair, React->K8s CD, atd.
+- T React stuff (Redux, atd.) for beginners as well
+- T 10x PHP serial na nejake jednoduche appce ala videa
 
 ## Blogpost ideas normal
 - space stuff
