@@ -1,4 +1,4 @@
-name: Build+Push+Deploy blog into K8s
+name: Build->push->deploy 'blog' into my DigitalOcean Kubernetes cluster
 
 on:
   workflow_dispatch:
