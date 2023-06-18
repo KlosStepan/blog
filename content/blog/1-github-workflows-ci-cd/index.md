@@ -3,7 +3,7 @@ title: GitHub Workflows for CI/CD
 date: "2023-06-18T11:20:00.000Z"
 ---
 
-`Continuous integration & Continuous delivery` can be very useful technique when used properly for automating mundane tasks in your development process.
+Continuous integration & Continuous delivery `CI/CD` can be very useful technique when used properly for automating mundane tasks in your development process.
 
 In this post I will show you 3 different **workflows** (or pipelines) that serve different purposes:
 1. CI pipeline for PHP application testing CRUD functionality,
