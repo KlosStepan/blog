@@ -109,3 +109,8 @@ The fastest way to combine your favorite tools and APIs to build the fastest sit
 ## Blogpost ideas normal
 - space stuff
 - future idk
+- books about that stuff
+
+## Business stuff
+- Write about business ventures that I tried/trying
+- Have threads about each project
