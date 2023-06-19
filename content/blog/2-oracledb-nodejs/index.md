@@ -2,7 +2,7 @@
 title: Oracle DB in Node.js
 date: "2023-06-19T19:48:00.000Z"
 ---
-# Intro
+
 In this post we will lay out possibilities of using Oracle Database and it’s specific features to facilitate process of creating your application. Oracle Database is a typical database managment system commercial developed by Oracle Corporation. Compared to MySQL, or rather it’s opensource implementation MariaDB, Oracle databases come with several perks that make working with it easier. Some of them will be described in this document along with other user experiences and examples of use.
 
 
