@@ -1,6 +1,6 @@
 ---
 title: DigitalOcean Kubernetes production Cluster
-date: "2023-06-16T23:46:37.121Z"
+date: "2023-06-21T23:10:00.000Z"
 ---
 
 Description of our DOKS setup and tools/applications w/ configurations and brief tutorials.
