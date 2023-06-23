@@ -1,5 +1,5 @@
 ---
-title: Hello blog!
+title: Install MySQL to Kubernetes Cluster
 date: "2023-06-23T11:52:00.000Z"
 ---
 
@@ -10,12 +10,12 @@ There are several steps that have to be performed. We want to install MySQL data
 </p>
 
 ## 0. Create K8s Secret called MySQL ROOT_PASSWORD
-script `0-encode-base64.zsh` 
+| script `0-encode-base64.zsh` 
 ```zsh 
 #!/usr/bin/zsh
 echo -n $1 | base64
 ```
-secret for mysql root password `0-mysql-secret.yaml`
+| secret for mysql root password `0-mysql-secret.yaml`
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -25,6 +25,7 @@ type: Opaque
 data:
   ROOT_PASSWORD: cGFzc3dvcmQ=
 ```
+Steps
 1. Encode master password via script to put into **Kubernetes Secret** [^1] with command `zsh 0-encode-base64.zsh password`
 ```
 cGFzc3dvcmQ=
@@ -54,7 +55,7 @@ Data
 ROOT_PASSWORD:  11 bytes
 ```
 ## Create PV and PVC on it. Create MySQL Deployment using PVC as storage
-k8s Persistent Volume and Persistent Volume Claim `1-pv-pvc-mysql.yaml`
+| k8s Persistent Volume and Persistent Volume Claim `1-pv-pvc-mysql.yaml`
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
@@ -83,7 +84,7 @@ spec:
       storage: 8Gi
   storageClassName: do-block-storage
 ```
-internal service and deployment `2-deployment-mysql.yaml`
+| internal service and deployment `2-deployment-mysql.yaml`
 ```yaml
 apiVersion: v1
 kind: Service
@@ -131,6 +132,7 @@ spec:
         persistentVolumeClaim:
           claimName: mysql-pvc-claim
 ```
+Steps
 1. Execute `kubectl apply -f 1-pv-pvc-mysql.yaml`
 ```
 persistentvolume/mysql-pv created
@@ -141,7 +143,7 @@ persistentvolumeclaim/mysql-pvc-claim created
 service/mysql created
 ```
 ## Expose MySQL behind publicly accessible Service
-public service `3-service-mysql.yaml`
+| public service `3-service-mysql.yaml`
 ```yaml
 apiVersion: v1
 kind: Service
@@ -155,6 +157,7 @@ spec:
     port: 3306
     targetPort: 3306
 ```
+Steps
 1. Execute `kubectl apply -f 3-service-mysql.yaml`
 ```
 service/mysql-service created
