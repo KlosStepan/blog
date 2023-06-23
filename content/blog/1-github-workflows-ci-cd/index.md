@@ -7,8 +7,8 @@ Continuous integration & Continuous delivery `CI/CD` can be very useful techniqu
 
 In this post I will show you 3 different **workflows** (or pipelines) that serve different purposes:
 1. CI pipeline for PHP application testing CRUD functionality,
-2. CD pipeline for React.js frontend deployment into DigitalOcean Kubernetes cluster,
-3. CD pipeline for Vue/Nuxt frontend for deployment into Azure AKS.
+2. CD pipeline for React.js frontend deployment into DOKS cluster,
+3. Build pipeline for Nuxt(Vue.js) frontend and push into Azure ACR.
 
 Each workflow is a scripted array of steps streamlinng some mundane process runnable `on push` or `executed manually`.
 ## CI pipeline for PHP application testing CRUD functionality
@@ -68,7 +68,7 @@ jobs:
 
 ## CD pipeline for React.js frontend deployment into DOKS cluster
 ```yaml
-name: Build->push->deploy 'lnmap' into my DigitalOcean Kubernetes cluster
+name: Build->push->deploy 'react-app' into DigitalOcean Kubernetes cluster
 
 on:
   workflow_dispatch:
@@ -89,16 +89,16 @@ jobs:
         token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
     - name: Build Docker image
-      run: docker build -t stepanklos/lightning_map:$(echo $GITHUB_SHA | head -c7) .
+      run: docker build -t your_dockerhub/react-app:$(echo $GITHUB_SHA | head -c7) .
 
     - name: Dockerhub login
       run: docker login --username ${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Push image to Dockerhub
-      run: docker push stepanklos/lightning_map:$(echo $GITHUB_SHA | head -c7)
+      run: docker push your_dockerhub/react-app:$(echo $GITHUB_SHA | head -c7)
 
     - name: Update deployment file
-      run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|stepanklos/lightning_map:'${TAG}'|' $GITHUB_WORKSPACE/config/deployment.yaml
+      run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|your_dockerhub/react-app:'${TAG}'|' $GITHUB_WORKSPACE/config/deployment.yaml
 
     - name: Save DigitalOcean kubeconfig with short-lived credentials
       run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.CLUSTER_NAME }}
@@ -107,13 +107,48 @@ jobs:
       run: kubectl apply -f $GITHUB_WORKSPACE/config/deployment.yaml
 
     - name: Verify Deployment
-      run: kubectl rollout status deployment/lnmap
-
-
+      run: kubectl rollout status deployment/react-app
 ```
-## CD pipeline for Vue/Nuxt frontend for deployment into Azure AKS
+### $GITHUB_WORKSPACE/config/deployment.yaml
 ```yaml
-name: Build->push 'geoportal-frontend' into ACR //TODO deployment into AKS
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-app-service
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: react-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: react-app
+  template:
+    metadata:
+      labels:
+        app: react-app
+    spec:
+      containers:
+      - name: react-app
+        image: <IMAGE>
+        ports:
+        - containerPort: 8080
+        env:
+        - name: MESSAGE
+          value: Hello from react-app Deployment!
+```
+## Build pipeline for Nuxt(Vue.js) frontend and push into Azure ACR
+```yaml
+name: Build->push 'app-frontend' into Azure ACR 
 
 on:
   workflow_dispatch:
@@ -128,8 +163,17 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
       
-    - name: Build Docker image
-      run: docker build -t cr98w54wcn2395hcjhu85u.azurecr.io/geoportal-frontend-test-1:$(echo $GITHUB_SHA | head -c7) .
+    - name: Build Docker image of frontend as 'app-frontend'
+      run: docker build -t ${{ secrets._AZURE_REGISTRY_URL }}.azurecr.io/app-frontend:$(echo $GITHUB_SHA | head -c7) .
 
-    # TODO script another steps
+
+    - name: Login into Azure
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ secrets.AZURE_REGISTRY_URL }}.azurecr.io
+        username: ${{ secrets.AZURE_LOGIN }}
+        password: ${{ secrets.AZURE_PASSWORD }}
+
+    - name: "Push 'app-frontend' into Azure ACR"
+      run: docker push ${{ secrets.AZURE_REGISTRY_URL }}.azurecr.io/app-frontend:$(echo $GITHUB_SHA | head -c7)
 ```
