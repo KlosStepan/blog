@@ -1,5 +1,6 @@
 ---
 title: GitHub Workflows for CI/CD
+tags: ["deployment", "fullstack", "kubernetes"]
 date: "2023-06-18T11:20:00.000Z"
 ---
 

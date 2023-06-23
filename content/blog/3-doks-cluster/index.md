@@ -1,5 +1,6 @@
 ---
 title: DigitalOcean Kubernetes production Cluster
+tags: ["kubernetes"]
 date: "2023-06-21T23:10:00.000Z"
 ---
 

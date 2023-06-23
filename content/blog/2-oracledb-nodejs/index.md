@@ -1,5 +1,6 @@
 ---
 title: Oracle DB in Node.js
+tags: ["backend", "database", "fullstack"]
 date: "2023-06-19T19:48:00.000Z"
 ---
 

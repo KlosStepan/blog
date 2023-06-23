@@ -1,5 +1,6 @@
 ---
 title: Install MySQL to Kubernetes Cluster
+tags: ["database", "fullstack", "kubernetes"]
 date: "2023-06-23T11:52:00.000Z"
 ---
 

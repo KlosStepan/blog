@@ -1,5 +1,6 @@
 ---
 title: Install Redis to Kubernetes Cluster
+tags: ["database", "fullstack", "kubernetes"]
 date: "2023-06-23T11:29:00.000Z"
 ---
 
