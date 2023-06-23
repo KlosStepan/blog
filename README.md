@@ -100,6 +100,24 @@ The fastest way to combine your favorite tools and APIs to build the fastest sit
 ## Blog ideas overall
 - nice design
 - categories
+```javascript
+query {
+  allMarkdownRemark(
+    filter: { frontmatter: { tags: { in: ["kubernetes"] } } }
+  ) {
+    edges {
+      node {
+        frontmatter {
+          title
+          tags
+          date
+        }
+        excerpt
+      }
+    }
+  }
+}
+```
 - mby rebrand to different domain, but not yet 
 
 ## Blogpost Ideas programming
