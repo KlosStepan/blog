@@ -4,7 +4,6 @@ tags: ["database", "fullstack", "kubernetes"]
 date: "2023-06-23T11:52:00.000Z"
 ---
 
-# Install MySQL into Kubernetes Cluster
 There are several steps that have to be performed. We want to install MySQL database server by deploying https://hub.docker.com/_/mysql image. There have to be done some things around than just pulling image, running container and keeping data.  
 <p align="center">
   <img src="mysql-deployment.png" alt="Installed MySQL in K8s Cluster "/>

@@ -4,7 +4,6 @@ tags: ["database", "fullstack", "kubernetes"]
 date: "2023-06-23T11:29:00.000Z"
 ---
 
-# Install Redis to K8s Cluster
 Follow these steps to achieve desired functionality like previously shown in 
 [**mysql-deployment**](https://github.com/KlosStepan/DOKS-tutorial/tree/main/mysql-deployment).  
 Used image of Redis https://hub.docker.com/_/redis has to be wrapped in the similar manner and exposed as `redis-service:6379`.  
