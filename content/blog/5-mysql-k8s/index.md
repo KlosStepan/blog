@@ -1,15 +1,16 @@
 ---
-title: Install MySQL to Kubernetes Cluster
+title: How to Install MySQL to Kubernetes Cluster
 tags: ["database", "fullstack", "kubernetes"]
 date: "2023-06-23T11:52:00.000Z"
 ---
 
-There are several steps that have to be performed. We want to install MySQL database server by deploying https://hub.docker.com/_/mysql image. There have to be done some things around than just pulling image, running container and keeping data.  
+There are several steps that have to be performed. We want to install MySQL database server by deploying https://hub.docker.com/_/mysql image. There have to be done some things around than just pulling image and running container. Follow through the article, and we'll provide all the necessary steps.  
 <p align="center">
   <img src="mysql-deployment.png" alt="Installed MySQL in K8s Cluster "/>
 </p>
 
-## 0. Create Kubernetes Secret called ROOT_PASSWORD
+## 0. Create Kubernetes Secret called `ROOT_PASSWORD`.
+<ins>Files/scripts</ins>
 - Script `0-encode-base64.zsh` to encode password into base64.
 ```zsh 
 #!/usr/bin/zsh
@@ -44,8 +45,9 @@ default-token-4nxzv   kubernetes.io/service-account-token   3      97d
 mysqldb-secrets       Opaque                                1      9m13s
 pwnstepo-registry     kubernetes.io/dockerconfigjson        1      96d
 ```
-4. Run `kubectl describe secret mysqldb-secrets` to check newly created secret.
+4. Check newly created secret.
 ```
+kubectl describe secret mysqldb-secrets
 Name:         mysqldb-secrets
 Namespace:    default
 Labels:       <none>
@@ -57,7 +59,8 @@ Data
 ====
 ROOT_PASSWORD:  11 bytes
 ```
-## Create PV and PVC on it. Create MySQL Deployment using PVC as storage
+## I. Create PV and PVC on it. Create MySQL Deployment using PVC as a storage.
+<ins>Files/Scripts</ins>
 - Kubernetes **Persistent Volume** and **Persistent Volume Claim** `1-pv-pvc-mysql.yaml`.
 ```yaml
 apiVersion: v1
@@ -148,7 +151,8 @@ kubectl apply -f 2-deployment-mysql.yaml
 service/mysql created
 deployment/mysql created
 ```
-## Expose MySQL behind publicly accessible Service
+## II. Expose MySQL behind publicly accessible Service.
+<ins>Files/Scripts</ins>
 - Public Service `3-service-mysql.yaml`.
 ```yaml
 apiVersion: v1
@@ -163,7 +167,7 @@ spec:
     port: 3306
     targetPort: 3306
 ```
-Steps
+<ins>Steps</ins>
 1. Create public Service.
 ```
 kubectl apply -f 3-service-mysql.yaml
@@ -178,7 +182,7 @@ mysql                     ClusterIP   None            <none>        3306/TCP   7
 mysql-service             ClusterIP   10.245.2.59     <none>        3306/TCP   28s
 ...
 ```
-# Your `mysql-service` is now live!
-Database server is then accessible on `mysql-service` or `mysql-service:3306` within the cluster.   
+## III. Your mysql-service is now live!
+Database server is then accessible in the closter on `mysql-service` i.e. `mysql-service:3306`.   
 
 [^1]: https://kubernetes.io/docs/concepts/configuration/secret/
