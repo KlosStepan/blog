@@ -27,7 +27,7 @@ data:
   ROOT_PASSWORD: cGFzc3dvcmQ=
 ```
 <ins>Steps</ins>
-1. Encode password viaa script to put into **Kubernetes Secret** [^1].
+1. Encode password via script to put into **Kubernetes Secret** [^1].
 ```
 zsh 0-encode-base64.zsh password
 cGFzc3dvcmQ=
