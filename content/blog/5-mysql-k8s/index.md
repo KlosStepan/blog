@@ -182,7 +182,7 @@ mysql                     ClusterIP   None            <none>        3306/TCP   7
 mysql-service             ClusterIP   10.245.2.59     <none>        3306/TCP   28s
 ...
 ```
-## III. Your mysql-service is now live!
+## III. Your mysql-service is live now!
 Database server is then accessible in the closter on `mysql-service` i.e. `mysql-service:3306`.   
 
 [^1]: https://kubernetes.io/docs/concepts/configuration/secret/
