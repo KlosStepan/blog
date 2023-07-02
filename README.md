@@ -1,3 +1,48 @@
+# My blog - http://blog.stkl.cz
+## Blog ideas - tuning overall
+- Design to be nice
+- Categories via GraphQL
+```javascript
+query {
+  allMarkdownRemark(
+    filter: { frontmatter: { tags: { in: ["kubernetes"] } } }
+  ) {
+    edges {
+      node {
+        frontmatter {
+          title
+          tags
+          date
+        }
+        excerpt
+      }
+    }
+  }
+}
+```
+- Google Analytics for traffic
+- Some share like donate idk
+- mby rebrand to different domain, but not yet 
+
+## Blogposts programming
+- [ ] <ins>Overw.</ins> - How to make simple npm package
+- [ ] <ins>Overw.</ins> - Get ready your Kubernetes cluster (what steps do you need)
+- [x] <ins>Techn.</ins> - Node.js ft Oracle DB
+- [ ] <ins>Techn.</ins> - React/Node fullstack
+- [ ] <ins>Techn.</ins> - Kubernetes stuff (DOKS-tutorial ala) 1-5 napr.
+- [x] <ins>Techn.</ins> - CI/CD pipeliny SwimmPair, React->K8s CD, atd.
+- [ ] <ins>Techn.</ins> - React stuff (Redux, atd.) for beginners as well
+- [ ] <ins>Techn.</ins> - 10x PHP serial na nejake jednoduche appce ala videa
+
+## Blogposts normal - ideas
+- space stuff
+- future idk
+- books about that stuff
+
+## Business stuff - ideas
+- Write about business ventures that I tried/trying succ/fail
+- Have threads about each project - i.e. LNMap, Bot, etc.
+___  
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.com">
@@ -97,44 +142,4 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 The fastest way to combine your favorite tools and APIs to build the fastest sites, stores, and apps for the web. And also the best place to build, deploy, and host your Gatsby sites.
 
 <!-- AUTO-GENERATEDCONTENT:END -->
-## Blog ideas overall
-- nice design
-- categories
-```javascript
-query {
-  allMarkdownRemark(
-    filter: { frontmatter: { tags: { in: ["kubernetes"] } } }
-  ) {
-    edges {
-      node {
-        frontmatter {
-          title
-          tags
-          date
-        }
-        excerpt
-      }
-    }
-  }
-}
-```
-- mby rebrand to different domain, but not yet 
 
-## Blogpost Ideas programming
-- O How to make simple npm package
-- O Get ready your Kubernetes cluster (what steps do you need)
-- T Node.js ft Oracle DB
-- T React/Node fullstack
-- T Kubernetes stuff (DOKS-tutorial ala) 1-5 napr.
-- T CI/CD pipeliny SwimmPair, React->K8s CD, atd.
-- T React stuff (Redux, atd.) for beginners as well
-- T 10x PHP serial na nejake jednoduche appce ala videa
-
-## Blogpost ideas normal
-- space stuff
-- future idk
-- books about that stuff
-
-## Business stuff
-- Write about business ventures that I tried/trying
-- Have threads about each project
