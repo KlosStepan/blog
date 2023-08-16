@@ -1,14 +1,9 @@
 ---
-title: Ingress article
+title: Configure Ingress to accomodate nested services on the same domain
 date: "2023-08-14T23:46:00.000Z"
 ---
-
-My new Gatsby blog live at [blog.stkl.cz](http://blog.stkl.cz/).
-
-![Headless fighter entering Northrend](./img_2384.jpg)
-
-# Ingress configuration of frontend-backend web application Cluster with correct HTTP header rewrites
-Configure cluster for web application with frontend and backend on difrerent addresses: 
+ 
+Configure cluster for web application with frontend and backend on one domain: 
 - frontend on `/`,
 - backend on `/backend`.
 
@@ -16,6 +11,8 @@ Configure cluster for web application with frontend and backend on difrerent add
  
  This problem is discussed in Ticket **Ingress changes original content type #5265** [^1].
  
+ ## Peak into configuration as follows  
+
 `ingress-config.yaml`
 ```yaml
 apiVersion: networking.k8s.io/v1
