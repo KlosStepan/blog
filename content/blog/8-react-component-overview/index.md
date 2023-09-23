@@ -8,7 +8,7 @@ With React 16.8 `Functional Components` were introduced and quickly became de fa
 
 There are things that come into making of `React` with `Functional Component` code.  
 
-//add TS <Number|null>
+## Code example
 ```JSX
 import React, { useState } from 'react';
 import { Pwnspinner } from 'pwnspinner'; // <- 1
@@ -48,12 +48,14 @@ function BestTeams(props: IBestTeamsProps = {}) { // <- for ex. 2
 }
 ```
 
+## Breakdown of fundamentals
 1. `import` is realized via **JavaScript Modules** [^1].
 2. `TypeScript` [^2] is removed during `application build` or `compilation`.
 3. `useState` hook[^3] is storing data by Closures [^4] and Destructuring assignment [^5].
 4. `fetch` is a browser Web API functionality [^6].
 5. Array operations (a)`.find`[^7] and (b)`.map`[^8] are new ES6 features.
 6. `JSX` is syntactic sugar for `React.createElement(...)`[^9].
+
 
 [^1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
 [^2]: https://www.typescriptlang.org
