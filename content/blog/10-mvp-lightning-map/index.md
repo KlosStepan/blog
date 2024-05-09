@@ -57,6 +57,16 @@ Quick prototyping stack is:
 - MapBox,
 - Firebase. 
 
+### Peak into Firebase  
+
+<p align="center">
+  <img src="./firebase-1.png" alt="firebase-tools"/>
+</p>  
+
+<p align="center">
+  <img src="./firebase-2.png" alt="firebase-peak-firestore-database"/>
+</p>  
+
 These things are potentially dangerous:
 - React.js should be used with MUI/RadixUI,
 - Custom design has to be done,
