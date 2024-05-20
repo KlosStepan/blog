@@ -1,9 +1,9 @@
 ---
 title: Prototype of Lightning Map
-date: "2024-05-19T21:56:00.000Z"
+date: "2024-05-09T21:56:00.000Z"
 ---
 
-Lightning Network is now de-facto standard Layer 2 on the top of Bitcoin since 2019. One can use Layer 1 Bitcoin then swap it into Layer 2 for `instant` and `cheap` micropayments. 
+Lightning Network is now de facto standard Layer 2 on the top of Bitcoin since 2019. One can use Layer 1 Bitcoin then swap it into Layer 2 for `instant` and `cheap` micropayments. 
 
 <p align="center">
   <img src="./phoenix-wallet.png" alt="phoenix-lightning"/>
