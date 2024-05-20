@@ -1,12 +1,12 @@
 ---
-title: MVP Lightning map
+title: Prototype of Lightning Map
 date: "2024-05-19T21:56:00.000Z"
 ---
 
-`Lightning Network` is now de-facto standard Layer 2 on the top of Bitcoin since 2019. One can use Layer 1 Bitcoin then swap it into Layer 2 for `instant` and `cheap` micropayments. 
+Lightning Network is now de-facto standard Layer 2 on the top of Bitcoin since 2019. One can use Layer 1 Bitcoin then swap it into Layer 2 for `instant` and `cheap` micropayments. 
 
 <p align="center">
-  <img src="./IMG_2124.PNG" alt="phoenix-lightning"/>
+  <img src="./phoenix-wallet.png" alt="phoenix-lightning"/>
 </p> 
 
  This opens avenue to using Bitcoin as convenient payment tool in everyday life. The question now is - where can we use it, so it makes my life easier?  
