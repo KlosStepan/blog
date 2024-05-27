@@ -79,7 +79,15 @@ export default function Home() {
     </>
   )
 }
-```
+```  
+
+# Code of describer project
+Check out the code project. Rust code from the repository is compiled using `Makefile`, then uploaded to `npm registry`. It is then included as project dependency in `package.json` of demo project, which is attached with simple usage.  
+
+- Rust code https://github.com/KlosStepan/Rust-to-Wasm-packages
+- Application running our npm package https://github.com/KlosStepan/Next-ft-Wasm  
+
+
 [^1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
 [^2]: https://www.npmjs.com/settings/pwnstepo/packages
 [^3]: https://www.rust-lang.org
