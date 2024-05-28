@@ -15,7 +15,7 @@ We use `createTheme` [^1] for styling of our web application. Watch for fonts `P
 </p> 
 
 # TrueType font  
-Some fonts, unfortunately, are only distrubuted as `.tff` or `.woff`.  
+Some fonts, unfortunately, are only distrubuted as `.ttf` or `.woff`.  
 We must load font in `MuiCssBaseline`[^2] in `theme.js` (external file including createTheme) and specify source `src` there. We then must use `<CssBaseline />` which "serves as CSS reset" for MUI. Also, `.tff` is specified as `truetype` in import format.  
 Once we have these things in place, we use font in `typography`.
 
