@@ -17,7 +17,7 @@ Lightning Network is de facto standard Layer 2 on the top of Bitcoin since 2019.
  - internet payments for `convinience & simplicity`.
 
 ## Why Lightning map?
-My idea was to aggregate such places & e-shops that accept Lightning.
+My idea was to aggregate such places & e-shops that accept Lightning as payment method.
 
 My personal motivation is to:
 - as a Lightning fan, I want to know where to use Lightning in Prague,
@@ -25,7 +25,7 @@ My personal motivation is to:
 - add e-shops that sell goods which I am interested in,
 - run biggest up-to-date website with Lightning-only places which is reliable. 
 
-For doing that I decided to create prototype of how would such thing look like and work and maybe to show this idea to others who might be interested. I prototyped most important bare minimum functionality with easy tools. Now I only deploy frontend container to my DigitalOcean K8s for preview purposes.
+For doing that I decided to create prototype of how would such thing look like and work and maybe to show this idea to others who might be interested. I prototyped most important bare minimum functionality with easy tools. Now I only deploy `frontend` container to my DigitalOcean Kubernetes for preview purposes.
 
 #### Homepage
 <p align="center">
@@ -57,8 +57,8 @@ Quick prototyping stack is:
 - MapBox,
 - Firebase. 
 
-### Peak into Firebase  
-We use Firebase for simplicity. We use `document database` and `auth functionality`. Firebase is BAAS, however, the structure should be usable in other document database - namely MongoDB. Therefore, using Firebase Database is migratable and doesn't pose an obstacle.  
+### Peak into the Firebase  
+We use Firebase for simplicity. We use `Firestore Database` (document database) and `Authentication` (auth functionality). Firebase is BAAS, however, the structure should be usable in other document database - namely MongoDB. Therefore, using Firebase Database is migratable and doesn't pose an obstacle.  
 <p align="center">
   <img src="./firebase-1.png" alt="firebase-tools"/>
 </p>  
@@ -77,13 +77,13 @@ The roadmap to a real project (not necessarily in that order) is:
 1. Get good design with more general targeting of Lightning topic.
 2. Rewrite frontend to MUI (not necessarily full).
 3. Ditch MapBox for free, yet highly customizable solution (as part of frontend works).
-4. Finalize database schema - migratable `Firestore Database` to `MongoDB`
-5. Provision infrastructure in `Google Cloud` via `Terraform`, which would contain managed Kubernetes, including `frontend` and `backend` workloads and managed MariaDB aside in Google Cloud. Use Firebase for bare minimum.
-6. Write backend in Node.js or Go, potentially use Protocol Buffers for API definition and Istio for service mesh.
+4. Finalize database schema - also write application client-side oriented so `Firestore Database` is migratable to `MongoDB` without large obstacles.
+5. Provision infrastructure in `DigitalOcean`/`AWS` via `Terraform`, which would contain managed Kubernetes, including `frontend` (and potential `backend` workloads). 
+6. Write backend in Node.js or Go in the same manner. Use Firebase for bare minimum - as authentication middleware.
 7. Ditch Firebase for data storage (! already defined final structure to avoid migrations - `merchants`, `e-shops`) and attach backend to it.
-8. Deploy whole project again to Google Cloud with `backend` and `MongoDB`.
+8. Deploy the whole project to `DOKS`/`EKS` with `backend` and managed `MongoDB` in the cloud.
 9. Explore options of using Terraform not only for `infrastructure provisioning` but also for `Kubernetes managment`, most importantly redeploys, etc.
-10. Use this Terraform replicability to run tests against this piece of software at testing environment.  
+10. Use this Terraform replicability to run tests against this piece of software or create testing environment in different namespace for E2E.  
 
 Long live Lightning map!   
 

@@ -3,7 +3,7 @@ title: Material UI custom fonts
 date: "2024-05-20T18:50:00.000Z"
 ---
 
-In this post I will show how to use custom fonts in Material UI in React application. The reason is that I found it troubling and seemingly intuitive setup didn't work. 
+In this post I'm gonna show how to use custom fonts in Material UI in React application. The reason is that I found it troubling and seemingly intuitive setup didn't work. 
 
 We will use `external fonts` from these 2 sources:
 - TrueType font (`.ttf file`),
@@ -39,6 +39,9 @@ In `theme.js` import the font before theme definition as follows
 const ibmPlexSansCondensed = require('@fontsource/ibm-plex-sans-condensed');
 ```   
 and then reference it around as `IBM Plex Sans Condensed`.  
+
+# Final word
+By applying these steps you are able to quickly plug in fonts into your MUI setup from external sources without any trouble.
 
 [^1]: https://mui.com/material-ui/customization/theming/#custom-variables
 [^2]: https://mui.com/material-ui/react-css-baseline

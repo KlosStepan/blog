@@ -27,7 +27,7 @@ We code our desired functionality in the Rust module.
 ## Distribute Rust module as `npm package`
 Rust to Wasm compilation can be carried out to accomodate `npm module` format as well. We have to set target to `--target bundler`. To prepare, or expose our prepared packed functionality run following commands in the appopriate module folder. Then `package.json` with appropriate entrypoint to `pwnrusthellowasm.js` is generated for us.  
 
-## Rust to Wasm Overview
+## Rust to Wasm overview
 Rust[^3] is prepared to run in the web browser. There are several key takeways and tools making it possible.
 - WebAssembly Core Specification (2019) [^4] bringing `Wasm` runtime to browser standard.
 - `wasm-pack` tool for compiling code to WebAssembly.
@@ -36,9 +36,7 @@ Rust[^3] is prepared to run in the web browser. There are several key takeways a
 Then `Rust lib` -> `ES6 code` / `ES6 module`, `Cargo.toml` -> `package.json`, + `js wrapper`.  
 Our final code, js wrapper and wasm is then found in `/pkg` directory.  
 
-# Go to WebAssembly
-TODO
-# Wasm module in React.js (Next.js)
+# Wasm module in React.js (framework Next.js)
 Demonstrational snippet usage on how to load `npm package` (acutal prepared and bundled Wasm binary) and use module's functions.  
 
 ```jsx
@@ -81,7 +79,7 @@ export default function Home() {
 }
 ```  
 
-# Code of describer project
+# Code of described project
 Check out the code project. Rust code from the repository is compiled using `Makefile`, then uploaded to `npm registry`. It is then included as project dependency in `package.json` of demo project, which is attached with simple usage.  
 
 - Rust code https://github.com/KlosStepan/Rust-to-Wasm-packages
