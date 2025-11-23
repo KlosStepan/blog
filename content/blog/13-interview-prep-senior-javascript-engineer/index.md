@@ -1,5 +1,5 @@
 ---
-title: Interview Prep – Senior JavaScript Engineer: What You Need to Know
+title: "Interview Prep – Senior JavaScript Engineer: What You Need to Know"
 date: "2025-11-23T10:00:00.000Z"
 ---
 
