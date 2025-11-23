@@ -1,6 +1,6 @@
 ---
 title: "Interview Prep – Senior JavaScript Engineer: What You Need to Know"
-date: "2025-11-23T10:00:00.000Z"
+date: "2025-11-24T10:00:00.000Z"
 ---
 
 In this post, I want to walk you through the core areas you really need to understand if you’re aiming for a Senior JavaScript Engineer role. This isn’t just a checklist—it’s a map of the landscape, based on what I’ve seen, built, and broken over a decade in the field. If you’re prepping for interviews or just want to see what “senior” really means in the JS world, read on.
