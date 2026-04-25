@@ -1,6 +1,6 @@
 ---
 title: "Gaming on Arch Linux — Steam, Proton, Vulkan and Diablo IV"
-date: "2026-04-27T10:00:00.000Z"
+date: "2026-04-25T10:00:00.000Z"
 ---
 
 I game on Arch and this is the practical, no-nonsense guide I wish I had when I started. It covers installing Steam on Arch, Vulkan and 32‑bit support, what Proton actually does, quick Diablo IV expectations, and a handful of troubleshooting tips I used when I broke stuff.

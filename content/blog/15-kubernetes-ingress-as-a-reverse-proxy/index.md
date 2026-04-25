@@ -1,6 +1,6 @@
 ---
 title: "Kubernetes Ingress as a Reverse Proxy"
-date: "2026-04-25T10:00:00.000Z"
+date: "2026-03-25T10:00:00.000Z"
 ---
 
 **Reverse proxy** — a single HTTP(S) entry point that accepts external requests and forwards them to one or more backend servers, handling TLS termination, load balancing, routing and cross-cutting concerns (auth, caching).
@@ -26,8 +26,91 @@ We mask `external domain` under  `projectdomain.com/api`. New setup that we need
 
 ![Kubernetes+VPS Google SSO - good](./k8s-vps-google-sso-good.png)
 
-## TODO //continue, Ingress 2, reapply
-//  Next steps: document upstreams, add the second Ingress if needed, reapply manifests and verify the SSO flow and logging.
+
+## Practical split: Ingress + /api Ingress
+
+Traffic is split into two Ingress resources so the cluster cleanly handles frontend routing and `/api` proxying on the same domain.
+
+### High level
+- **Primary Ingress** (`johndoe-kubernetes-ingress-config.yaml`)  
+  Terminates TLS and routes `projectdomain.com` → `project-frontend-service`.
+- **API Ingress** (`johndoe-projectdomain-com-api.yaml`)  
+  Handles `https://projectdomain.com/api`, rewrites the path, sets `Host: project-domain.com`, and proxies to the external backend over HTTPS (targeted via a Kubernetes Service).
+
+---
+
+## Files to create/apply
+- [johndoe-kubernetes-ingress-config.yaml](johndoe-kubernetes-ingress-config.yaml)  
+- [johndoe-projectdomain-com-api.yaml](johndoe-projectdomain-com-api.yaml)
+
+---
+
+## Apply
+```sh
+kubectl apply -f johndoe-kubernetes-ingress-config.yaml
+kubectl apply -f johndoe-projectdomain-com-api.yaml
+```
+
+Verify
+```sh
+kubectl get ingress johndoe-kubernetes-ingress johndoe-projectdomain-api -o wide
+kubectl describe ingress johndoe-projectdomain-api
+```
+
+### Notes
+- Both Ingresses use the same host: `projectdomain.com`.
+- `/api` is handled separately to avoid conflicts with frontend routing.
+- `nginx.ingress.kubernetes.io/upstream-vhost: "project-domain.com"` ensures the correct Host header for the external backend.
+- Ensure TLS secret `projectdomain-com-tls` exists (cert-manager or pre-created secret).
+
+### Snippets
+
+1) Primary Ingress (frontend) — host rule excerpt
+```yaml
+# ...
+# host rule inside johndoe-kubernetes-ingress-config.yaml
+- host: "projectdomain.com"
+  http:
+    paths:
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: project-frontend-service
+            port:
+              number: 80
+# ...
+```
+
+2) API Ingress (full) — `johndoe-projectdomain-com-api.yaml`
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: johndoe-projectdomain-api
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/upstream-vhost: "project-domain.com"
+    nginx.ingress.kubernetes.io/proxy-body-size: "20m"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - projectdomain.com
+      secretName: projectdomain-com-tls
+  rules:
+    - host: projectdomain.com
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: project-backend-external
+                port:
+                  number: 443
+```
 
 ## Conclusion
 

@@ -1,6 +1,6 @@
 ---
 title: "Arch Linux for 2 years"
-date: "2026-04-26T10:00:00.000Z"
+date: "2026-04-04T10:00:00.000Z"
 ---
 
 I have been using Arch Linux for 2 years and I really like it. However, there are things you have to be cautious about. Recently I've discovered that thanks to Valve's work, you can very well be gaming on Arch with AMD hardware using `proton`+`vulkan`  - this, however, has to be a separate blogpost.
