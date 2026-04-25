@@ -1,9 +1,9 @@
 ---
-title: "Kubernetes Ingress as a Reverse Proxy"
+title: "Arch Linux for 2 years"
 date: "2026-04-26T10:00:00.000Z"
 ---
 
-I have been using Arch Linux for 2 years and I really like it.
+I have been using Arch Linux for 2 years and I really like it. However, there are things you have to be cautious about. Recently I've discovered that thanks to Valve's work, you can very well be gaming on Arch with AMD hardware using `proton`+`vulkan`  - this, however, has to be a separate blogpost.
 
 ![Arch Linux - neofetch](./arch-linux-neofetch.png)
 
@@ -12,6 +12,8 @@ I switched to Arch Linux out of desperation - after years of trying to run on di
 Two years in, I can say Arch is an amazing system that runs really well. Furthermore, it taught me more about how Linux actually boots, how userspace and kernels interact.
 
 Why a minimal, rolling distro Arch Linux `REWARDS CURIOSITY` with smoothness — and `IS RUTHLESS WHEN ONE HITS AN EDGE-CASE` breakage.
+
+
 
 ## Why I picked Arch
 
